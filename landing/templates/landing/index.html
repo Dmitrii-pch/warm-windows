@@ -1,0 +1,214 @@
+﻿{% extends 'landing/base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <h1>Тёплые окна с умным обогревом</h1>
+            <p>Современные стеклопакеты с электроподогревом, которые заменяют батареи и избавляют от конденсата.</p>
+            <div class="hero-actions">
+                <button class="btn" onclick="scrollToForm()">Рассчитать стоимость</button>
+                <a href="#technology" class="btn btn-ghost">Как это работает</a>
+            </div>
+            <ul class="hero-list">
+                <li>Экономия до 30% на отоплении</li>
+                <li>Комфорт без радиаторов и труб</li>
+                <li>Панорамное остекление без запотевания</li>
+            </ul>
+        </div>
+        <div class="hero-card">
+            <h3>Быстрый расчёт окна</h3>
+            <form method="post">
+                {% csrf_token %}
+                <label>
+                    Ваше имя
+                    <input type="text" name="name" required>
+                </label>
+                <label>
+                    Телефон
+                    <input type="tel" name="phone" placeholder="+7 xxx xxx xx xx" required>
+                </label>
+                <label>
+                    Тип объекта
+                    <select name="type">
+                        <option>Квартира</option>
+                        <option>Коттедж</option>
+                        <option>Кафе/ресторан</option>
+                        <option>Офис</option>
+                    </select>
+                </label>
+                <button type="submit" class="btn btn-full">Отправить заявку</button>
+                {% if success_hero %}
+                <p class="form-success">Спасибо! Заявка отправлена, мы свяжемся с вами в ближайшее время.</p>
+                {% else %}
+                <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                {% endif %}
+                <input type="text" name="email_confirm" style="display:none">
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="products">
+    <div class="container">
+        <h2>Решения для тёплого остекления</h2>
+        <p class="section-subtitle">Стеклопакеты с электроподогревом для квартиры, дома и коммерческих объектов.</p>
+
+        <div class="cards-grid">
+            <article class="card">
+                <h3>Окна вместо батарей</h3>
+                <p>Тёплые стеклопакеты, которые поддерживают комфортную температуру без радиаторов под подоконником.</p>
+                <ul>
+                    <li>Равномерный прогрев поверхности</li>
+                    <li>Регулировка температуры по зонам</li>
+                    <li>Совместимость с «умным домом»</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Панорамные стены</h3>
+                <p>Остекление от пола до потолка с подогревом по периметру для гостиных, террас и кафе.</p>
+                <ul>
+                    <li>Отсутствие конденсата по краям</li>
+                    <li>Комфорт рядом с окном зимой</li>
+                    <li>Снижение теплопотерь здания</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Тёплая кровля и зимние сады</h3>
+                <p>Стеклянные крыши с подогревом, предотвращающие образование наледи и сосулек.</p>
+                <ul>
+                    <li>Контроль температуры крыши</li>
+                    <li>Работа по расписанию</li>
+                    <li>Повышенная безопасность зимой</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Интерьерные решения</h3>
+                <p>Тёплые витрины и стеклянные перегородки для интерьеров и коммерческих помещений.</p>
+                <ul>
+                    <li>Комфортные зоны возле стекла</li>
+                    <li>Отсутствие запотевания</li>
+                    <li>Эстетика и функциональность</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="technology">
+    <div class="container technology">
+        <div class="technology-text">
+            <h2>Технология тёплого стекла</h2>
+            <p>В основе — закалённое стекло с прозрачным токопроводящим слоем и безопасное питание от 220 В через терморегулятор.</p>
+            <p>Система поддерживает заданную температуру, управляя мощностью по аналогии с тёплыми полами и снижая теплопотери помещения.</p>
+            <ul class="bullets">
+                <li>Скрытые токоподводы и аккуратная врезка в профиль</li>
+                <li>Датчики температуры и защита от перегрева</li>
+                <li>Интеграция с системами «умного дома»</li>
+            </ul>
+        </div>
+        <div class="technology-facts">
+            <div class="fact">
+                <span class="fact-number">13+</span>
+                <span class="fact-label">лет опыта производства тёплых стеклопакетов</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">25</span>
+                <span class="fact-label">лет расчётный срок службы стеклопакетов с подогревом</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">5</span>
+                <span class="fact-label">лет гарантия при профессиональном монтаже</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="reviews">
+    <div class="container">
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews-grid">
+            <article class="review">
+                <h3>Ирина, Москва</h3>
+                <p>«Сделали тёплое остекление на балконе. Зимой не потребовалось дополнительное отопление, а окна не запотевают.»</p>
+            </article>
+            <article class="review">
+                <h3>Кафе на набережной</h3>
+                <p>«Панорамные окна больше не «плачут», гости с удовольствием выбирают места у стекла даже в мороз.»</p>
+            </article>
+            <article class="review">
+                <h3>Алексей, коттедж</h3>
+                <p>«В зимнем саду всегда комфортно, стеклянная кровля остаётся чистой и без наледи.»</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="faq">
+    <div class="container">
+        <h2>Частые вопросы</h2>
+        <div class="faq">
+            <details>
+                <summary>Безопасно ли касаться тёплого стекла?</summary>
+                <p>Да, температура поверхности находится в комфортном диапазоне и система имеет защиту от перегрева.</p>
+            </details>
+            <details>
+                <summary>Сколько электроэнергии потребляют тёплые окна?</summary>
+                <p>Потребление зависит от площади и режима работы. Чаще всего окна работают не на полной мощности, а поддерживают заданную температуру через терморегулятор.</p>
+            </details>
+            <details>
+                <summary>Можно ли подключить окна к «умному дому»?</summary>
+                <p>Да, используются стандартные терморегуляторы и релейные блоки, которые интегрируются с популярными системами автоматизации.</p>
+            </details>
+            <details>
+                <summary>Какой срок службы и гарантия?</summary>
+                <p>Расчётный срок службы стеклопакетов с подогревом — до 25 лет, гарантия при профессиональном монтаже — до 5 лет.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section class="section section-accent" id="contacts">
+    <div class="container form-section">
+        <div class="form-section-text">
+            <h2>Контакты</h2>
+            <p>Оставьте заявку или свяжитесь с нами удобным способом — поможем подобрать тёплые окна под ваш объект.</p>
+            <ul class="bullets">
+                <li>Телефон: <a href="tel:+74950000000">+7 (495) 000‑00‑00</a></li>
+                <li>E‑mail: <a href="mailto:info@warmwindows.ru">info@warmwindows.ru</a></li>
+                <li>Адрес: Москва, Рязанский проспект, д. 10</li>
+            </ul>
+        </div>
+        <div class="form-section-form" id="lead-form">
+            <form method="post">
+                {% csrf_token %}
+                <label>
+                    Имя
+                    <input type="text" name="contact_name" required>
+                </label>
+                <label>
+                    Телефон
+                    <input type="tel" name="contact_phone" required>
+                </label>
+                <label>
+                    Сообщение
+                    <textarea name="contact_message" rows="3" placeholder="Опишите объект или задайте вопрос."></textarea>
+                </label>
+                <button type="submit" class="btn btn-full">Отправить сообщение</button>
+                {% if success_contacts %}
+                <p class="form-success">Спасибо! Сообщение отправлено.</p>
+                {% endif %}
+                <input type="text" name="email_confirm" style="display:none">
+
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
