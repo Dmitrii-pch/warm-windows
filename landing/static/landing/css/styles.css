@@ -128,8 +128,12 @@ a {
 }
 
 .hero {
+	min-height: 100vh;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
 	padding: 72px 0 56px;
-	background: radial-gradient(circle at top left, #2b4b63 0, #1a1a1a 55%);
 }
 
 .hero-inner {
@@ -186,6 +190,34 @@ a {
 	padding: 24px;
 	border: 1px solid var(--border);
 }
+	.hero-card form {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.hero-card label {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		font-size: 14px;
+	}
+
+	.hero-card input,
+	.hero-card select {
+		padding: 10px 14px;
+		border-radius: var(--radius);
+		border: 1px solid var(--border);
+		background: #222;
+		color: var(--text);
+		font-size: 14px;
+		width: 100%;
+	}
+
+	.hero-card .btn-full {
+		width: 100%;
+		margin-top: 4px;
+	}
 
 /* Footer */
 
@@ -459,4 +491,218 @@ details p {
 	.reviews-grid {
 		grid-template-columns: minmax(0,1fr);
 	}
+}
+
+/* Advantages */
+
+.advantages-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0,1fr));
+	gap: 20px;
+}
+
+.advantage {
+	background: #181818;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	padding: 24px;
+	text-align: center;
+	transition: border-color var(--transition), transform var(--transition);
+}
+
+	.advantage:hover {
+		border-color: var(--accent);
+		transform: translateY(-4px);
+	}
+
+.advantage-icon {
+	font-size: 36px;
+	margin-bottom: 12px;
+}
+
+.advantage h3 {
+	margin: 0 0 8px;
+	font-size: 16px;
+}
+
+.advantage p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+	.advantages-grid {
+		grid-template-columns: repeat(2, minmax(0,1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.advantages-grid {
+		grid-template-columns: minmax(0,1fr);
+	}
+}
+
+/* Steps */
+
+.steps-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0,1fr));
+	gap: 20px;
+}
+
+.step {
+	background: #181818;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	padding: 24px;
+	position: relative;
+}
+
+.step-number {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--accent);
+	color: #fff;
+	font-weight: 700;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 14px;
+}
+
+.step h3 {
+	margin: 0 0 8px;
+	font-size: 16px;
+}
+
+.step p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+	.steps-grid {
+		grid-template-columns: repeat(2, minmax(0,1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.steps-grid {
+		grid-template-columns: minmax(0,1fr);
+	}
+}
+
+/* Quiz */
+
+.quiz form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.quiz label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 14px;
+}
+
+.quiz input {
+	padding: 10px 14px;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	background: #181818;
+	color: var(--text);
+	font-size: 14px;
+	width: 100%;
+}
+
+.quiz .btn-full {
+	width: 100%;
+	margin-top: 4px;
+}
+
+.quiz {
+	max-width: 680px;
+}
+
+	.quiz h3 {
+		margin: 0 0 20px;
+		font-size: 18px;
+	}
+
+.quiz-options {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0,1fr));
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.quiz-option {
+	background: #181818;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 14px 12px;
+	color: var(--text);
+	font-size: 14px;
+	cursor: pointer;
+	transition: border-color var(--transition), background var(--transition);
+	text-align: center;
+}
+
+	.quiz-option:hover {
+		border-color: var(--accent);
+	}
+
+	.quiz-option.selected {
+		border-color: var(--accent);
+		background: rgba(52, 152, 219, 0.15);
+		color: #fff;
+	}
+
+.quiz-next:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	transform: none;
+}
+
+@media (max-width: 600px) {
+	.quiz-options {
+		grid-template-columns: repeat(2, minmax(0,1fr));
+	}
+}
+
+.form-section-form form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.form-section-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 14px;
+}
+
+.form-section-form input,
+.form-section-form textarea {
+	padding: 10px 14px;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	background: #222;
+	color: var(--text);
+	font-size: 14px;
+	width: 100%;
+}
+
+.form-section-form .btn-full {
+	width: 100%;
+	margin-top: 4px;
 }

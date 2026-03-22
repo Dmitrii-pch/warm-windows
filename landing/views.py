@@ -1,10 +1,8 @@
 ﻿from django.shortcuts import render
-from .models import Lead
-
-from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Lead
+from .models import Lead, HeroBanner, Product, Project
+
 
 def normalize_phone(raw: str) -> str:
     phone = raw.strip()
@@ -40,7 +38,6 @@ def index(request):
     success_contacts = False
 
     if request.method == "POST":
-        # Форма в hero
         honeypot = request.POST.get("email_confirm", "")
         if honeypot:
             return render(request, "landing/index.html", {})
@@ -60,9 +57,6 @@ def index(request):
                 send_lead_email(lead)
                 success_hero = True
 
-
-
-        # Форма контактов
         elif "contact_name" in request.POST and "contact_phone" in request.POST:
             name = request.POST.get("contact_name", "").strip()
             phone_raw = request.POST.get("contact_phone", "")
@@ -78,18 +72,31 @@ def index(request):
                 send_lead_email(lead)
                 success_contacts = True
 
+    hero = HeroBanner.objects.filter(is_active=True).first()
     context = {
         "success_hero": success_hero,
         "success_contacts": success_contacts,
+        "hero": hero,
     }
     return render(request, "landing/index.html", context)
 
+
 def products(request):
-    return render(request, "landing/products.html")
+    products = Product.objects.all()
+    return render(request, "landing/products.html", {"products": products})
+
+
+def technology(request):
+    return render(request, "landing/technology.html")
 
 
 def projects(request):
-    return render(request, "landing/projects.html")
+    projects = Project.objects.all()
+    return render(request, "landing/projects.html", {"projects": projects})
+
+
+def reviews(request):
+    return render(request, "landing/reviews.html")
 
 
 def faq(request):
@@ -97,8 +104,26 @@ def faq(request):
 
 
 def contacts(request):
-    # можно переиспользовать ту же логику сохранения заявки, что и для нижней формы
+    success_contacts = False
+
     if request.method == "POST":
-        # сюда можно скопировать обработку contact_name/contact_phone/contact_message
-        pass
-    return render(request, "landing/contacts.html")
+        honeypot = request.POST.get("email_confirm", "")
+        if honeypot:
+            return render(request, "landing/contacts.html", {})
+
+        name = request.POST.get("contact_name", "").strip()
+        phone_raw = request.POST.get("contact_phone", "")
+        message = request.POST.get("contact_message", "").strip()
+        phone = normalize_phone(phone_raw)
+
+        if name and phone:
+            lead = Lead.objects.create(
+                name=name,
+                phone=phone,
+                source="contacts",
+                comment=message,
+            )
+            send_lead_email(lead)
+            success_contacts = True
+
+    return render(request, "landing/contacts.html", {"success_contacts": success_contacts})

@@ -1,7 +1,7 @@
 ﻿{% extends 'landing/base.html' %}
 
 {% block content %}
-<section class="hero">
+<section class="hero" {% if hero %}style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ hero.image.url }}'); background-size: cover; background-position: center;" {% endif %}>
     <div class="container hero-inner">
         <div class="hero-text">
             <h1>Тёплые окна с умным обогревом</h1>
@@ -46,6 +46,84 @@
                 <input type="text" name="email_confirm" style="display:none">
 
             </form>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2>Преимущества тёплых окон</h2>
+        <p class="section-subtitle">Почему клиенты выбирают WarmWindows</p>
+        <div class="advantages-grid">
+            <div class="advantage">
+                <div class="advantage-icon">💰</div>
+                <h3>Экономия</h3>
+                <p>Обогрев через окна в разы дешевле традиционных систем отопления — батарей, разводки и котла.</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-icon">🛡️</div>
+                <h3>Безопасность</h3>
+                <p>Закалённое стекло с защитой от перегрева. Безопасно для детей и домашних животных.</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-icon">🌿</div>
+                <h3>Экологичность</h3>
+                <p>Не сжигает кислород, не пересушивает воздух, не образует плесень на откосах.</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-icon">⚡</div>
+                <h3>Энергоэффективность</h3>
+                <p>Особое покрытие отражает тепло обратно в помещение даже в выключенном состоянии.</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-icon">🏠</div>
+                <h3>Комфорт</h3>
+                <p>Нет эффекта холодного окна, нет конденсата, нет сквозняков — даже в сильный мороз.</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-icon">📱</div>
+                <h3>Умный дом</h3>
+                <p>Интеграция с системами автоматизации. Управление температурой со смартфона.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <h2>Как мы работаем</h2>
+        <p class="section-subtitle">От заявки до тёплых окон — 6 простых шагов</p>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Заявка</h3>
+                <p>Оставьте заявку на сайте или позвоните нам — менеджер свяжется в течение 15 минут.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Консультация</h3>
+                <p>Уточняем детали, рассказываем о решениях и даём предварительный расчёт стоимости.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Замер</h3>
+                <p>Специалист выезжает на объект, замеряет проёмы и составляет техническое задание.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Договор и смета</h3>
+                <p>Формируем детальную смету, заключаем договор на изготовление и монтаж.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Производство</h3>
+                <p>Изготавливаем стеклопакеты по вашим размерам. Срок — 25–35 рабочих дней.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <h3>Монтаж и сдача</h3>
+                <p>Устанавливаем окна, подключаем, настраиваем и сдаём объект с гарантией 5 лет.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -168,6 +246,64 @@
                 <summary>Какой срок службы и гарантия?</summary>
                 <p>Расчётный срок службы стеклопакетов с подогревом — до 25 лет, гарантия при профессиональном монтаже — до 5 лет.</p>
             </details>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <h2>Рассчитайте стоимость за 1 минуту</h2>
+        <p class="section-subtitle">Ответьте на 3 вопроса — получите предварительный расчёт</p>
+        <div class="quiz">
+            <div class="quiz-step" id="quiz-step-1">
+                <h3>Шаг 1 из 3 — Тип объекта</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Квартира')">🏠 Квартира</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Коттедж')">🏡 Коттедж</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Кафе/ресторан')">☕ Кафе/ресторан</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Офис')">🏢 Офис</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Зимний сад')">🌿 Зимний сад</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'type', 'Стеклянная кровля')">🔲 Стеклянная кровля</button>
+                </div>
+                <button class="btn quiz-next" onclick="quizNext(1)" disabled>Далее →</button>
+            </div>
+
+            <div class="quiz-step" id="quiz-step-2" style="display:none">
+                <h3>Шаг 2 из 3 — Количество окон</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="quizSelect(this, 'count', '1–2 окна')">1–2 окна</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'count', '3–5 окон')">3–5 окон</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'count', '6–10 окон')">6–10 окон</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'count', 'Более 10 окон')">Более 10 окон</button>
+                </div>
+                <button class="btn quiz-next" onclick="quizNext(2)" disabled>Далее →</button>
+            </div>
+
+            <div class="quiz-step" id="quiz-step-3" style="display:none">
+                <h3>Шаг 3 из 3 — Когда планируете?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="quizSelect(this, 'time', 'Как можно скорее')">Как можно скорее</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'time', 'В течение месяца')">В течение месяца</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'time', 'Через 2–3 месяца')">Через 2–3 месяца</button>
+                    <button class="quiz-option" onclick="quizSelect(this, 'time', 'Просто интересуюсь')">Просто интересуюсь</button>
+                </div>
+                <button class="btn quiz-next" onclick="quizNext(3)" disabled>Получить расчёт →</button>
+            </div>
+
+            <div class="quiz-step" id="quiz-step-4" style="display:none">
+                <h3>Оставьте контакты — пришлём расчёт</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="quiz_type" id="quiz_type">
+                    <input type="hidden" name="quiz_count" id="quiz_count">
+                    <input type="hidden" name="quiz_time" id="quiz_time">
+                    <label>Имя <input type="text" name="name" required></label>
+                    <label>Телефон <input type="tel" name="phone" placeholder="+7 xxx xxx xx xx" required></label>
+                    <button type="submit" class="btn btn-full">Получить расчёт стоимости</button>
+                    <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                    <input type="text" name="email_confirm" style="display:none">
+                </form>
+            </div>
         </div>
     </div>
 </section>

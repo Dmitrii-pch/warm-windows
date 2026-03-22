@@ -1,0 +1,85 @@
+﻿{% extends 'landing/base.html' %}
+
+{% block content %}
+<section class="section section-alt">
+    <div class="container technology">
+        <div class="technology-text">
+            <h1>Технология тёплого стекла</h1>
+            <p>В основе — закалённое стекло с прозрачным токопроводящим слоем и безопасное питание от 220 В через терморегулятор.</p>
+            <p>Система поддерживает заданную температуру, управляя мощностью по аналогии с тёплыми полами и снижая теплопотери помещения.</p>
+            <ul class="bullets">
+                <li>Скрытые токоподводы и аккуратная врезка в профиль</li>
+                <li>Датчики температуры и защита от перегрева</li>
+                <li>Интеграция с системами «умного дома»</li>
+            </ul>
+        </div>
+        <div class="technology-facts">
+            <div class="fact">
+                <span class="fact-number">13+</span>
+                <span class="fact-label">лет опыта производства тёплых стеклопакетов</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">25</span>
+                <span class="fact-label">лет расчётный срок службы стеклопакетов с подогревом</span>
+            </div>
+            <div class="fact">
+                <span class="fact-number">5</span>
+                <span class="fact-label">лет гарантия при профессиональном монтаже</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2>Как это работает</h2>
+        <p class="section-subtitle">Три простых шага от заявки до тёплых окон.</p>
+        <div class="cards-grid">
+            <article class="card">
+                <h3>1. Замер и расчёт</h3>
+                <p>Выезжаем на объект, замеряем проёмы и рассчитываем мощность нагревательного слоя под ваши условия.</p>
+            </article>
+            <article class="card">
+                <h3>2. Производство</h3>
+                <p>Изготавливаем стеклопакет с токопроводящим покрытием, встраиваем терморегулятор и кабельные вводы.</p>
+            </article>
+            <article class="card">
+                <h3>3. Монтаж и настройка</h3>
+                <p>Устанавливаем окна, подключаем к сети, настраиваем температурный режим и сдаём объект с гарантией.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-accent">
+    <div class="container form-section">
+        <div class="form-section-text">
+            <h2>Остались вопросы по технологии?</h2>
+            <p>Свяжитесь с нами — наш специалист расскажет подробнее и поможет подобрать решение для вашего объекта.</p>
+            <ul class="bullets">
+                <li>Телефон: <a href="tel:+74950000000">+7 (495) 000‑00‑00</a></li>
+                <li>E‑mail: <a href="mailto:info@warmwindows.ru">info@warmwindows.ru</a></li>
+            </ul>
+        </div>
+        <div class="form-section-form">
+            <form method="post" action="{% url 'contacts' %}">
+                {% csrf_token %}
+                <label>
+                    Имя
+                    <input type="text" name="contact_name" required>
+                </label>
+                <label>
+                    Телефон
+                    <input type="tel" name="contact_phone" required>
+                </label>
+                <label>
+                    Вопрос
+                    <textarea name="contact_message" rows="3" placeholder="Задайте вопрос по технологии..."></textarea>
+                </label>
+                <button type="submit" class="btn btn-full">Отправить вопрос</button>
+                <input type="text" name="email_confirm" style="display:none">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
