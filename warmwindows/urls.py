@@ -18,7 +18,6 @@ urlpatterns = [
     path("faq/", views.faq, name="faq"),
     path("contacts/", views.contacts, name="contacts"),
     path('favicon.ico', serve, {'path': 'favicon.ico', 'document_root': BASE_DIR}),
-    path('404/', lambda request: page_not_found(request, None)),
     path("privacy/", views.privacy, name="privacy"),
     path("thanks/", views.thanks, name="thanks"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

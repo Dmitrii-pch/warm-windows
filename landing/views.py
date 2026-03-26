@@ -1,5 +1,4 @@
-﻿from django.shortcuts import render
-from django.core.mail import send_mail
+﻿from django.core.mail import send_mail
 from django.conf import settings
 from .models import Lead, HeroBanner, Product, Project
 from django.shortcuts import render, redirect
@@ -35,9 +34,6 @@ def send_lead_email(lead: Lead):
 
 
 def index(request):
-    success_hero = False
-    success_contacts = False
-
     if request.method == "POST":
         honeypot = request.POST.get("email_confirm", "")
         if honeypot:
@@ -74,12 +70,7 @@ def index(request):
                 return redirect('thanks')
 
     hero = HeroBanner.objects.filter(is_active=True).first()
-    context = {
-        "success_hero": success_hero,
-        "success_contacts": success_contacts,
-        "hero": hero,
-    }
-    return render(request, "landing/index.html", context)
+    return render(request, "landing/index.html", {"hero": hero})
 
 
 def products(request):
