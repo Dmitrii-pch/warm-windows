@@ -29,6 +29,7 @@
                     <textarea name="contact_message" rows="3" placeholder="Опишите объект или задайте вопрос."></textarea>
                 </label>
                 <button type="submit" class="btn btn-full">Отправить сообщение</button>
+                <p class="form-note">Нажимая на кнопку, вы соглашаетесь с <a href="{% url 'privacy' %}" style="color: var(--accent);">политикой конфиденциальности</a>.</p>
                 {% if success_contacts %}
                 <p class="form-success">Спасибо! Сообщение отправлено.</p>
                 {% endif %}

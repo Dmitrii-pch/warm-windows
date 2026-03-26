@@ -1,0 +1,12 @@
+﻿{% extends 'landing/base.html' %}
+
+{% block content %}
+<section class="section" style="min-height: 60vh; display: flex; align-items: center;">
+    <div class="container" style="text-align: center;">
+        <div style="font-size: 80px; margin-bottom: 16px;">✅</div>
+        <h1 style="margin: 0 0 16px;">Спасибо за заявку!</h1>
+        <p style="color: var(--muted); margin: 0 0 32px; max-width: 500px; margin-left: auto; margin-right: auto;">Мы получили вашу заявку и свяжемся с вами в ближайшее время. Обычно это занимает не более 15 минут в рабочее время.</p>
+        <a href="{% url 'index' %}" class="btn">Вернуться на главную</a>
+    </div>
+</section>
+{% endblock %}

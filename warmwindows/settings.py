@@ -98,3 +98,5 @@ EMAIL_HOST_USER = "pchelintsev.p2015@mail.ru"
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 ADMIN_EMAIL = "pchelintsev.p2015@mail.ru"
+
+ALLOWED_HOSTS = ['*']

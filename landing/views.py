@@ -2,6 +2,7 @@
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Lead, HeroBanner, Product, Project
+from django.shortcuts import render, redirect
 
 
 def normalize_phone(raw: str) -> str:
@@ -55,7 +56,7 @@ def index(request):
                     comment=f"Тип объекта: {obj_type}",
                 )
                 send_lead_email(lead)
-                success_hero = True
+                return redirect('thanks')
 
         elif "contact_name" in request.POST and "contact_phone" in request.POST:
             name = request.POST.get("contact_name", "").strip()
@@ -70,7 +71,7 @@ def index(request):
                     comment=message,
                 )
                 send_lead_email(lead)
-                success_contacts = True
+                return redirect('thanks')
 
     hero = HeroBanner.objects.filter(is_active=True).first()
     context = {
@@ -124,6 +125,15 @@ def contacts(request):
                 comment=message,
             )
             send_lead_email(lead)
-            success_contacts = True
+            return redirect('thanks')
 
     return render(request, "landing/contacts.html", {"success_contacts": success_contacts})
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)
+
+def privacy(request):
+    return render(request, "landing/privacy.html")
+
+def thanks(request):
+    return render(request, "landing/thanks.html")

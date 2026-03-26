@@ -1,0 +1,12 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<section class="section" style="min-height: 60vh; display: flex; align-items: center;">
+    <div class="container" style="text-align: center;">
+        <div style="font-size: 120px; font-weight: 700; color: var(--accent); line-height: 1;">404</div>
+        <h1 style="margin: 0 0 16px;">Страница не найдена</h1>
+        <p style="color: var(--muted); margin: 0 0 32px;">Возможно, страница была удалена или вы перешли по неверной ссылке.</p>
+        <a href="{% url 'index' %}" class="btn">Вернуться на главную</a>
+    </div>
+</section>
+{% endblock %}
